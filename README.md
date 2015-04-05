@@ -4,7 +4,7 @@ Shiny Server is a server program that makes [Shiny](http://rstudio.com/shiny) ap
 
 ## Features
 
-* Original Project readme can be found [here](README_original.md)
+* Original Project readme can be found [here](https://github.com/ekergy/shiny-server/blob/master/README_original)
 * This fork intents the working point fo set and use the shiny server as a Openshift Online App.
 
 ## Known limitations
