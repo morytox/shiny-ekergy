@@ -15,4 +15,4 @@ Shiny Server is a server program that makes [Shiny](http://rstudio.com/shiny) ap
 
 ## Installing
 
-* You must install R. In this repo we used the openshift quickstart found <a href="https://github.com/openshift-quickstart/r-quickstart" target="_blank">here</a>. In this repository we provide the minimal [script]() to get R working.
+* You must install R. In this repo we used the openshift quickstart found <a href="https://github.com/openshift-quickstart/r-quickstart" target="_blank">here</a>. In this repository we provide the minimal [script](https://github.com/ekergy/shiny-server/blob/master/R/deploy_R.sh) to get R working.
