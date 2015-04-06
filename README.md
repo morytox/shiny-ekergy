@@ -1,6 +1,7 @@
 # Shiny Server for Openshift online.
 
-Shiny Server is a server program that makes [Shiny](http://rstudio.com/shiny) applications available over the web.
+Shiny Server is a server program that makes <a href="http://rstudio.com/shiny" target="_blank">Shiny</a> applications available over the web.
+This repository fork the opensource version and make proper modification in other to get a working shiny server on openshift.
 
 ## Features
 
