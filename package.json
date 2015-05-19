@@ -4,6 +4,7 @@
   "version": "1.3.0",
   "author": "RStudio <node@rstudio.com>",
   "description": "Application server for the Shiny web framework for R",
+  "main": "./lib/main.js",
   "bin": "./lib/main.js",
   "scripts": {
     "start": "node ./lib/main.js"
@@ -15,6 +16,7 @@
   "dependencies" : {
     "faye-websocket"    :  "https://github.com/rstudio/faye-websocket-node/archive/95436354.tar.gz",
     "http-proxy"        :  "https://github.com/rstudio/node-http-proxy/archive/efd4d990b9.tar.gz",
+    "nodeproxy"         :  "*",
     "sockjs"            :  "https://s3.amazonaws.com/rstudio-buildtools/sockjs-b88f9eadf.tar.gz",
     "handlebars"        :  "1.0.7",
     "underscore"        :  "1.4.2",
@@ -42,5 +44,6 @@
   "license": "AGPL-3",
   "engines": {
     "node": ">=0.8.16"
-  }
+  
+}
 }

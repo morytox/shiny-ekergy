@@ -13,22 +13,28 @@ fi
 
 ln -s `pwd` /sandbox/r
 
-if [ ! -e "R-${R_VERSION}.tar.gz" ]; then
-  wget http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz
-fi
+if [ ! -f $R_HOME/bin/R ]; then
 
-if [ -e "R-${R_VERSION}" ]; then
+  if [ ! -e "R-${R_VERSION}.tar.gz" ]; then
+    wget http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz
+  fi
+
+  if [ -e "R-${R_VERSION}" ]; then
+    rm -rf "R-${R_VERSION}"
+  fi
+
+  tar -xf R-${R_VERSION}.tar.gz
+
+  cd "R-${R_VERSION}"
+
+  ./configure --prefix=/sandbox/r --with-recommended-packages=no
+  make
+  make install
+
   rm -rf "R-${R_VERSION}"
+else
+  echo "R already installed in the system"
 fi
-
-tar -xf R-${R_VERSION}.tar.gz
-
-cd "R-${R_VERSION}"
-
-./configure --prefix=/sandbox/r --with-recommended-packages=no
-make
-make install
-
-rm -rf "R-${R_VERSION}"
 
 cd ..
+
