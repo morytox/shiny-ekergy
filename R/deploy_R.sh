@@ -13,6 +13,12 @@ fi
 
 ln -s `pwd` /sandbox/r
 
+if [ -e "${OPENSHIFT_REPO_DIR}node_modules/.bin/R" ]; then
+  unlink ${OPENSHIFT_REPO_DIR}node_modules/.bin/R
+fi
+
+ln "${OPENSHIFT_DATA_DIR}r/bin/R" -s "${OPENSHIFT_REPO_DIR}node_modules/.bin/R"
+
 if [ ! -f $R_HOME/bin/R ]; then
 
   if [ ! -e "R-${R_VERSION}.tar.gz" ]; then

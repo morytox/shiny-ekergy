@@ -17,3 +17,13 @@ This repository forks the opensource version and make proper modifications in ot
 ## Installing
 
 * You must install R. In this repo we used the openshift quickstart found <a href="https://github.com/openshift-quickstart/r-quickstart" target="_blank">here</a>. In this repository we provide the minimal [script](https://github.com/ekergy/shiny-server/blob/master/R/deploy_R.sh) to get R working.
+
+for a quickstart just type:
+```
+rhc app create shinyfortest nodejs-0.10
+git rm -r *
+git commit -a -m"cleaning folder"
+git remote add upstream -m master https://github.com/ekergy/shiny-ekergy.git
+git pull -s recursive -X theirs upstream master
+git push
+```
