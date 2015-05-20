@@ -41,7 +41,7 @@ else
 fi
 
 if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
-  echo "installing Rcpp"
+  echo "installing plyr"
   wget http://cran.rstudio.com/src/contrib/plyr_1.8.2.tar.gz > $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
   bin/R CMD INSTALL plyr_1.8.2.tar.gz >> $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
   echo "done"
