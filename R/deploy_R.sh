@@ -33,10 +33,12 @@ if [ ! -f $R_HOME/bin/R ]; then
 
   cd "R-${R_VERSION}"
 
-  ./configure --prefix=/sandbox/r --with-recommended-packages=no
-  make
-  make install
-
+  ./configure --prefix=/sandbox/r --with-recommended-packages=no > $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  echo "R configure done"
+  make --silent >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  echo "R make done"
+  make install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  echo "R make install done"
   rm -rf "R-${R_VERSION}"
 else
   echo "R already installed in the system"
