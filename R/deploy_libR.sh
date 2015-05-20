@@ -3,6 +3,7 @@
 R_HOME="${OPENSHIFT_DATA_DIR}r"
 R_VERSION="3.1.2"
 
+
 mkdir -p $R_HOME
 
 cd $R_HOME
@@ -16,7 +17,7 @@ ln -s `pwd` /sandbox/r
 if [ ! -d $R_HOME/lib64/R/library/Rcpp ]; then
   echo "installing Rcpp"
   wget http://cran.es.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz
-  R CMD INSTALL Rcpp_0.11.6.tar.gz
+  bin/R CMD INSTALL Rcpp_0.11.6.tar.gz
   rm Rcpp_0.11.6.tar.gz
 else
  echo "Rcpp already installed"
@@ -34,6 +35,15 @@ if [ ! -d $R_HOME/lib64/R/library/shiny ]; then
   bin/Rscript -e "install.packages('shiny',contriburl = contrib.url('http://cran.r-project.org'))"
 else
  echo "shiny already installed"
+fi
+
+if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
+  echo "installing Rcpp"
+  wget http://cran.rstudio.com/src/contrib/plyr_1.8.2.tar.gz
+  bin/R CMD INSTALL plyr_1.8.2.tar.gz
+  rm plyr_1.8.2.tar.gz
+else
+ echo "plyr already installed"
 fi
 
 if [ ! -d $R_HOME/lib64/R/library/rCharts ]; then
