@@ -21,6 +21,7 @@ This repository forks the opensource version and make proper modifications in ot
 for a quickstart just type:
 ```
 rhc app create shinyfortest nodejs-0.10
+cd shinyfortest
 git rm -r *
 git commit -a -m"cleaning folder"
 git remote add upstream -m master https://github.com/ekergy/shiny-ekergy.git
