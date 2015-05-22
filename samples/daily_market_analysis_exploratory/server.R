@@ -1,5 +1,7 @@
 
-# shiny server
+# Pagina Web para el modelado, el analisis y la explotacion de datos del Mercado Electrico
+# http://priceprofor.ekergy.es/
+
 shinyServer(function(input, output, session) {
 
   # grafica highcharts
@@ -18,9 +20,11 @@ shinyServer(function(input, output, session) {
     p$title(text = "Mercado Electrico")
     
     # variables "x" e "y" que se dibujan en el grafico
-    omiemi <- omiefunc(as.character(input$dateRange[1]),as.character(input$dateRange[2]))
-    xInput <- as.numeric(as.POSIXct(c(subset(omiemi, as.Date(date) >= input$dateRange[1] & as.Date(date) <= input$dateRange[2])[,"date"])),"GMT") * 1000
-    yInput <- c(subset(omiemi, as.Date(date) >= input$dateRange[1] & as.Date(date) <= input$dateRange[2])[,input$varInput])
+    omiemi <- omiefunc(as.character(input$dateRange[1]), as.character(input$dateRange[2]))
+    xInput <- as.numeric(as.POSIXct(c(subset(omiemi, as.Date(date) >= input$dateRange[1] &
+                                                     as.Date(date) <= input$dateRange[2])[,"date"])),"GMT") * 1000
+    yInput <- c(subset(omiemi, as.Date(date) >= input$dateRange[1] &
+                               as.Date(date) <= input$dateRange[2])[,input$varInput])
     
     # convierte el tipo de dato del eje X en datetime
     p$xAxis(type='datetime')
@@ -52,8 +56,9 @@ shinyServer(function(input, output, session) {
   
   # tabla resumen de estadisticas de los valores graficados
   output$summary <- renderPrint({
-    omiemi <- omiefunc(as.character(input$dateRange[1]),as.character(input$dateRange[2]))
-    summary(c(subset(omiemi, as.Date(date) >= input$dateRange[1] & as.Date(date) <= input$dateRange[2])[,input$varInput]))
+    omiemi <- omiefunc(as.character(input$dateRange[1]), as.character(input$dateRange[2]))
+    summary(c(subset(omiemi, as.Date(date) >= input$dateRange[1] &
+                             as.Date(date) <= input$dateRange[2])[,input$varInput]))
   })
 
 })

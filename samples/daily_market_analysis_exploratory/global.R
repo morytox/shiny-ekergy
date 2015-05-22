@@ -1,9 +1,8 @@
 
-# instruccion para poner en funcionamiento la aplicacion
-# runApp("/home/david/workspace/shinyrcharts/samples/Interactive_highcharts_Shiny_postform/")
-# runApp("/home/david/workspace/shinyrcharts/samples/Interactive_highcharts_Shiny_postform/",port=12345,launch.browser=FALSE)
-# http://shinyrcharts-ekergydavid.rhcloud.com/samples/Interactive_highcharts_Shiny_postform/
+# Pagina Web para el modelado, el analisis y la explotacion de datos del Mercado Electrico
+# http://priceprofor.ekergy.es/
 
+# runApp("/home/david/workspace/shinyrcharts/samples/daily_market_analysis_exploratory/")
 library(RCurl)
 library(RJSONIO)
 library(shiny)
@@ -20,13 +19,10 @@ lastDate <- as.character(as.Date(z))
 omiefunc <- function (fechainicial,fechafinal) {
   urlData <- "http://priceprofor.ekergy.es/omieinfosys/DataFileGenerator";
   w <- postForm(urlData,
-                # .opts = list(postfields = toJSON(list(fechaini = "2011-1-1", fechafin = "2015-1-1", market = "ES")),
-                # .opts = list(postfields = toJSON(list(fechaini = "2011-1-1", fechafin = as.character(Sys.Date()), market = "ES")),
-                # .opts = list(postfields = toJSON(list(fechaini = "2011-1-1", fechafin = lastDate, market = "ES")),
-                # .opts = list(postfields = toJSON(list(fechaini = "2015-1-1", fechafin = lastDate, market = "ES")),
-                .opts = list(postfields = toJSON(list(fechaini = fechainicial, fechafin = fechafinal , market = "ES")),
-                             httpheader = c('Content-Type' = 'application/json', Accept = 'application/json')
-                ));
+       # .opts = list(postfields = toJSON(list(fechaini = "2011-1-1", fechafin = as.character(Sys.Date()), market = "ES")),
+       .opts = list(postfields = toJSON(list(fechaini = fechainicial, fechafin = fechafinal , market = "ES")),
+       httpheader = c('Content-Type' = 'application/json', Accept = 'application/json')
+       ));
   omiemi <- read.csv(text=w, sep = ";",  header=TRUE);
 
   # genero la variable "time" que es la hora en formato "HH"
@@ -50,4 +46,5 @@ omiefunc <- function (fechainicial,fechafinal) {
   return(omiemi);
  }
 
+# inicialmente omiemi es el ultimo dia con datos
 omiemi <- omiefunc(lastDate,lastDate)
