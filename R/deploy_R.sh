@@ -26,7 +26,8 @@ if [ ! -f $R_HOME/bin/R ]; then
     echo "downloading" > $OPENSHIFT_LOG_DIR/installR.log 2>&1
     wget --quiet http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
     echo -ne ". done"
-    echo '\n'--quiet 
+    echo '\n'--quiet
+  fi 
 
   if [ -e "R-${R_VERSION}" ]; then
     rm -rf "R-${R_VERSION}"
