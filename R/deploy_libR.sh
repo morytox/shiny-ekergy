@@ -16,7 +16,7 @@ ln -s `pwd` /sandbox/r
 
 if [ ! -d $R_HOME/lib64/R/library/Rcpp ]; then
   echo -ne "installing Rcpp ..\r"
-  wget http://cran.es.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+  wget --quiet http://cran.es.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
   bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
   echo -ne ". done\r"
   echo '\n'
@@ -45,15 +45,15 @@ else
  echo '\n'
 fi
 
-if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
-  echo "installing plyr"
-  wget http://cran.rstudio.com/src/contrib/plyr_1.8.2.tar.gz > $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
-  bin/R CMD INSTALL plyr_1.8.2.tar.gz >> $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
-  echo "done"
-  rm plyr_1.8.2.tar.gz
-else
- echo "plyr already installed"
-fi
+# if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
+#   echo "installing plyr"
+#   wget http://cran.rstudio.com/src/contrib/plyr_1.8.2.tar.gz > $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
+#   bin/R CMD INSTALL plyr_1.8.2.tar.gz >> $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
+#   echo "done"
+#   rm plyr_1.8.2.tar.gz
+# else
+#  echo "plyr already installed"
+# fi
 
 if [ ! -d $R_HOME/lib64/R/library/rCharts ]; then
   echo -ne "installing rCharts\r" 

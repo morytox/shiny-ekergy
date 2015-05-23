@@ -23,10 +23,9 @@ if [ ! -f $R_HOME/bin/R ]; then
 
   if [ ! -e "R-${R_VERSION}.tar.gz" ]; then
     echo -ne "Downloading R sources ..\r"
-    wget http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz > $OPENSHIFT_LOG_DIR/installR.log 2>&1
+    wget --quiet http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz > $OPENSHIFT_LOG_DIR/installR.log 2>&1
     echo -ne ". done"
-    echo '\n'
-  fi
+    echo '\n'--quiet 
 
   if [ -e "R-${R_VERSION}" ]; then
     rm -rf "R-${R_VERSION}"
@@ -44,7 +43,7 @@ if [ ! -f $R_HOME/bin/R ]; then
   echo -ne". done"
   echo '\n'
   echo -ne "installing R ..\r"
-  make install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  make --silent install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
   echo -ne "R make install\r"
   rm -rf "R-${R_VERSION}"
   echo -ne" done"
