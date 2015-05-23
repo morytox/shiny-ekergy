@@ -28,7 +28,7 @@ fi
 if [ ! -d $R_HOME/lib64/R/library/devtools ]; then
   echo -ne "installing devtools ..\r"
   bin/Rscript -e "install.packages('devtools',contriburl = contrib.url('http://cran.r-project.org'))" > $OPENSHIFT_LOG_DIR/installRdevtools.log 2>&1
-  echo -ne". done\r"
+  echo -ne ". done\r"
   echo '\n'
 else
   echo -ne "devtools already installed\r"
