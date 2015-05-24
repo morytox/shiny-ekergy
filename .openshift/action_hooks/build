@@ -1,6 +1,6 @@
 echo "Generate shiny-server.conf"
-time $OPENSHIFT_REPO_DIR/R/generate_shiny_server_conf.sh
+$OPENSHIFT_REPO_DIR/R/generate_shiny_server_conf.sh
 echo "Checking R server status" ...
-time $OPENSHIFT_REPO_DIR/R/deploy_R.sh
+$OPENSHIFT_REPO_DIR/R/deploy_R.sh
 echo "Checking R libraries status" ...
-time $OPENSHIFT_REPO_DIR/R/deploy_libR.sh
+$OPENSHIFT_REPO_DIR/R/deploy_libR.sh

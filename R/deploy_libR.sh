@@ -19,7 +19,7 @@ if [ ! -d $R_HOME/lib64/R/library/Rcpp ]; then
   wget --quiet http://cran.es.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
   bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
   echo -ne ". done\r"
-  echo '\n'
+  echo ''
   rm Rcpp_0.11.6.tar.gz
 else
  echo "Rcpp already installed"
@@ -29,20 +29,20 @@ if [ ! -d $R_HOME/lib64/R/library/devtools ]; then
   echo -ne "installing devtools ..\r"
   bin/Rscript -e "install.packages('devtools',contriburl = contrib.url('http://cran.r-project.org'))" > $OPENSHIFT_LOG_DIR/installRdevtools.log 2>&1
   echo -ne ". done\r"
-  echo '\n'
+  echo ''
 else
   echo -ne "devtools already installed\r"
-  echo '\n'
+  echo ''
 fi
 
 if [ ! -d $R_HOME/lib64/R/library/shiny ]; then
   echo -ne "installing shiny ..\r"
   bin/Rscript -e "install.packages('shiny',contriburl = contrib.url('http://cran.r-project.org'))" > $OPENSHIFT_LOG_DIR/installRshiny.log 2>&1
   echo -ne ". done"
-  echo '\n'
+  echo ''
 else
  echo -ne "shiny already installed\r"
- echo '\n'
+ echo ''
 fi
 
 # if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
@@ -59,9 +59,9 @@ if [ ! -d $R_HOME/lib64/R/library/rCharts ]; then
   echo -ne "installing rCharts\r" 
   bin/Rscript -e "library('devtools');install_git('https://github.com/ramnathv/rCharts.git')" > $OPENSHIFT_LOG_DIR/installRcharts.log 2>&1
   echo -ne "done"
-  echo '\n'
+  echo ''
 else
   echo -ne "rCharts already installed\r"
-  echo '\n'
+  echo ''
 fi
 
