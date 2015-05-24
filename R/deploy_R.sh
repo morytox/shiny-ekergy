@@ -25,7 +25,7 @@ if [ ! -f $R_HOME/bin/R ]; then
     echo -ne "Downloading R sources ..\r"
     echo "downloading" > $OPENSHIFT_LOG_DIR/installR.log 2>&1
     wget --quiet http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-    echo -ne ". done"
+    echo -ne "Downloading R sources ... done\r"
     echo ''
   fi 
 
@@ -38,15 +38,15 @@ if [ ! -f $R_HOME/bin/R ]; then
   cd "R-${R_VERSION}"
   echo -ne "configuring R ..\r"
   ./configure --prefix=/sandbox/r --with-recommended-packages=no >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo -ne "configuring R ... done"
+  echo -ne "configuring R ... done\r"
   echo ''
   echo -ne "building R ..\r"
   make --silent >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo -ne "building R ... done"
+  echo -ne "building R ... done\r"
   echo ''
   echo -ne "installing R ..\r"
   make --silent install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo -ne "installing R ... done"
+  echo -ne "installing R ... done\r"
   rm -rf "R-${R_VERSION}"
   echo ''
   

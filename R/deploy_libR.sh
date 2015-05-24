@@ -38,7 +38,7 @@ fi
 if [ ! -d $R_HOME/lib64/R/library/shiny ]; then
   echo -ne "installing shiny ..\r"
   bin/Rscript -e "install.packages('shiny',contriburl = contrib.url('http://cran.r-project.org'))" > $OPENSHIFT_LOG_DIR/installRshiny.log 2>&1
-  echo -ne "installing shiny ... done"
+  echo -ne "installing shiny ... done\r"
   echo ''
 else
  echo -ne "shiny already installed\r"
@@ -49,7 +49,7 @@ if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
   echo -ne "installing plyr ..\r"
   wget http://cran.rstudio.com/src/contrib/plyr_1.8.2.tar.gz > $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
   bin/R CMD INSTALL plyr_1.8.2.tar.gz >> $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
-  echo -ne "installing plyr ... done"
+  echo -ne "installing plyr ... done\r"
   echo ''
   rm plyr_1.8.2.tar.gz
 else
@@ -58,9 +58,9 @@ else
 fi
 
 if [ ! -d $R_HOME/lib64/R/library/rCharts ]; then
-  echo -ne "installing rCharts\r" 
+  echo -ne "installing rCharts ..\r" 
   bin/Rscript -e "library('devtools');install_git('https://github.com/ramnathv/rCharts.git')" > $OPENSHIFT_LOG_DIR/installRcharts.log 2>&1
-  echo -ne "done"
+  echo -ne "installing rCharts ...done\r"
   echo ''
 else
   echo -ne "rCharts already installed\r"
