@@ -12,16 +12,9 @@
 
 local({
   # Read config directives from stdin and put them in the environment.
-  # OPENSHIFT_NODEJS_IP <- Sys.getenv('OPENSHIFT_NODEJS_IP')
-  # cat(paste("\nStarting Shiny on: '",OPENSHIFT_NODEJS_IP,"'\n", sep=""))
-  # fileConn<-file("/var/lib/openshift/55509a2b4382ec4bb5000120/app-root/logs/output.log")
-  # writeLines(c("Hello","World",OPENSHIFT_NODEJS_IP,"verver"), fileConn)
-  # close(fileConn)
-
   fd = file('stdin')
   input <- readLines(fd)
   Sys.setenv(
-  # OPENSHIFT_NODEJS_IP=Sys.getenv('OPENSHIFT_NODEJS_IP'),
   SHINY_APP=input[1],
   SHINY_PORT=input[2],
   SHINY_GAID=input[3],
@@ -174,21 +167,21 @@ if (is.na(port)) {
 }
 cat(paste("\nStarting Shiny with process ID: '",Sys.getpid(),"'\n", sep=""))
 
-# Fix to R workers know the right IP to communicate with.
+# for OPENSHIFT
+# Fix to R worker know the right IP to communicate with.
 fileConn<-file("~/.env/OPENSHIFT_NODEJS_IP",open="r")
 OPENSHIFT_NODEJS_IP <- suppressWarnings(readLines(fileConn))
 close(fileConn)
 
 if (identical(Sys.getenv('SHINY_MODE'), "shiny")){
   # runApp(Sys.getenv('SHINY_APP'),port=port,launch.browser=FALSE)
-  # runApp(Sys.getenv('SHINY_APP'),port=port,host='127.6.250.1',launch.browser=FALSE)
-  # cat(paste("\nStarting Shiny on: '",OPENSHIFT_NODEJS_IP,"'\n", sep=""))
+  # for OPENSHIFT
   runApp(Sys.getenv('SHINY_APP'),port=port,host=OPENSHIFT_NODEJS_IP,launch.browser=FALSE)
 } else if (identical(Sys.getenv('SHINY_MODE'), "rmd")){
   library(rmarkdown)
   rmarkdown::run(file=NULL, dir=Sys.getenv('SHINY_APP'),
+  # for OPENSHIFT
   # shiny_args=list(port=port,host='127.6.250.1',launch.browser=FALSE), auto_reload=FALSE)
-  # cat(paste("\nStarting Shiny on: '",OPENSHIFT_NODEJS_IP,"'\n", sep=""))
   shiny_args=list(port=port,host=OPENSHIFT_NODEJS_IP,launch.browser=FALSE), auto_reload=FALSE)
 } else{
   stop(paste("Unclear Shiny mode:", Sys.getenv('SHINY_MODE')))

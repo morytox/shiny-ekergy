@@ -1,3 +1,4 @@
+
 echo "removing old shiny-server.conf file"
 rm -f $OPENSHIFT_REPO_DIR/shiny-server.conf
 echo "generating shiny-server.conf file"

@@ -21,9 +21,15 @@ ln "${OPENSHIFT_DATA_DIR}r/bin/R" -s "${OPENSHIFT_REPO_DIR}node_modules/.bin/R"
 
 if [ ! -f $R_HOME/bin/R ]; then
 
+  echo "No installation found:"
+
   if [ ! -e "R-${R_VERSION}.tar.gz" ]; then
-    wget http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz
-  fi
+    echo -ne "Downloading R sources ..\r"
+    echo "downloading" > $OPENSHIFT_LOG_DIR/installR.log 2>&1
+    wget --quiet http://cran.cnr.berkeley.edu/src/base/R-3/R-${R_VERSION}.tar.gz >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+    echo -ne "Downloading R sources ... done\r"
+    echo ''
+  fi 
 
   if [ -e "R-${R_VERSION}" ]; then
     rm -rf "R-${R_VERSION}"
@@ -32,17 +38,22 @@ if [ ! -f $R_HOME/bin/R ]; then
   tar -xf R-${R_VERSION}.tar.gz
 
   cd "R-${R_VERSION}"
-
-  ./configure --prefix=/sandbox/r --with-recommended-packages=no > $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo "R configure done"
+  echo -ne "configuring R ..\r"
+  ./configure --prefix=/sandbox/r --with-recommended-packages=no >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  echo -ne "configuring R ... done\r"
+  echo ''
+  echo -ne "building R ..\r"
   make --silent >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo "R make done"
-  make install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo "R make install done"
+  echo -ne "building R ... done\r"
+  echo ''
+  echo -ne "installing R ..\r"
+  make --silent install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  echo -ne "installing R ... done\r"
   rm -rf "R-${R_VERSION}"
+  echo ''
+  
 else
-  echo "R already installed in the system"
+  echo "R already installed in the gear"
 fi
 
 cd ..
-
