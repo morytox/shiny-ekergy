@@ -15,4 +15,6 @@ install.packages("RJSONIO", contriburl = contrib.url("http://cran.r-project.org"
 
 # codigo R para ejecutar una aplicacion shiny usando RStudio
 library('shiny')
-runApp("/home/david/workspace/shinyrcharts/samples/electric_market_correlations_technologies_vs_price/")
+route = "/home/david/workspace/shinyrcharts/samples/"
+folder = "electric_market_correlations_technologies_vs_price"
+runApp(paste(route,folder,sep=""))
