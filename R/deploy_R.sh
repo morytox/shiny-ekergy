@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 R_HOME="${OPENSHIFT_DATA_DIR}r"
 R_VERSION="3.1.2"
 
@@ -59,6 +57,3 @@ else
 fi
 
 cd ..
-
-
-exit 0
