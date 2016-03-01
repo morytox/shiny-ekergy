@@ -1,4 +1,4 @@
 
-Estadisticas basicas de los precios y tecnologias relevantes en el mercado electrico. 
+Estadísticas básicas de los precios y tecnologías relevantes en el mercado eléctrico.
 
-Se calculan estadisticas de las variables, para el rango de fechas que se ha elegido. 
+Se calculan estadísticas de las variables, para el rango de fechas que se ha elegido.

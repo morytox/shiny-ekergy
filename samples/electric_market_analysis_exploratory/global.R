@@ -3,10 +3,15 @@
 # http://priceprofor.ekergy.es/
 
 # runApp("/home/david/workspace/shinyrcharts/samples/electric_market_analysis_exploratory/")
+library(XML)
 library(RCurl)
 library(RJSONIO)
 library(shiny)
-library(rCharts)
+library(devtools)
+#install.packages('installr')
+#install_github("ramnathv/rCharts")
+#require("rCharts")
+#library(rCharts)
 
 # fecha de datos
 urlStatus <- "http://priceprofor.ekergy.es/omieinfosys/status"

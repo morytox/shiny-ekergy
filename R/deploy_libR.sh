@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 R_HOME="${OPENSHIFT_DATA_DIR}r"
 R_VERSION="3.1.2"
 
@@ -22,7 +24,15 @@ if [ ! -d $R_HOME/lib64/R/library/Rcpp ]; then
   echo ''
   rm Rcpp_0.11.6.tar.gz
 else
- echo "Rcpp already installed"
+  if [ -f Rcpp_0.11.6.tar.gz ]; then
+    echo -ne "reinstalling Rccp ..\r"
+    bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+    echo -ne "reinstalling Rccp ...done\r"
+    rm Rcpp_0.11.6.tar.gz
+  else
+    echo -ne"Rcpp already installed"
+  fi
+  echo ''
 fi
 
 if [ ! -d $R_HOME/lib64/R/library/devtools ]; then
@@ -53,8 +63,17 @@ if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
   echo ''
   rm plyr_1.8.2.tar.gz
 else
- echo -ne "shiny already installed\r"
- echo ''
+  if [ -f plyr_1.8.2.tar.gz ]; then
+    echo -ne "reinstalling Rccp ..\r"
+    bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+    echo -ne "reinstalling Rccp ...done\r"
+    rm plyr_1.8.2.tar.gz
+  else
+    echo -ne"Rcpp already installed"
+  fi
+  echo ''
+  echo -ne "plyr already installed\r"
+  echo ''
 fi
 
 if [ ! -d $R_HOME/lib64/R/library/rCharts ]; then
@@ -67,3 +86,4 @@ else
   echo ''
 fi
 
+exit 0

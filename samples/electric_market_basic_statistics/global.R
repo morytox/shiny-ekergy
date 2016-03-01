@@ -6,10 +6,10 @@
 library(RCurl)
 library(RJSONIO)
 library(shiny)
-library(rCharts)
+#library(rCharts)
 
 # fecha de datos
-urlStatus <- "http://priceprofor.ekergy.es/omieinfosys/status"
+urlStatus <- "http://priceprofor-nfqsolutions.rhcloud.com/omieinfosys/status"
 x <- getURLContent(urlStatus)
 y <- fromJSON(x)
 z <- y$StudyDataMIBEL$endrecdate
@@ -17,7 +17,7 @@ lastDate <- as.character(as.Date(z))
 
 # fichero de datos
 omiefunc <- function (fechainicial,fechafinal) {
-  urlData <- "http://priceprofor.ekergy.es/omieinfosys/DataFileGenerator";
+  urlData <- "http://priceprofor-nfqsolutions.rhcloud.com/omieinfosys/DataFileGenerator";
   w <- postForm(urlData,
                 # .opts = list(postfields = toJSON(list(fechaini = "2011-1-1", fechafin = as.character(Sys.Date()), market = "ES")),
                 .opts = list(postfields = toJSON(list(fechaini = fechainicial, fechafin = fechafinal , market = "ES")),
