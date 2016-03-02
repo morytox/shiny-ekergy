@@ -16,17 +16,17 @@ ln -s `pwd` /sandbox/r
 
 if [ ! -d $R_HOME/lib64/R/library/Rcpp ]; then
   echo -ne "installing Rcpp ..\r"
-  wget --quiet http://cran.es.r-project.org/src/contrib/Rcpp_0.11.6.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
-  bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+  wget --quiet http://cran.es.r-project.org/src/contrib/Rcpp_0.12.3.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+  bin/R CMD INSTALL Rcpp_0.12.3.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
   echo -ne "installing Rcpp ... done\r"
   echo ''
   rm Rcpp_0.11.6.tar.gz
 else
-  if [ -f Rcpp_0.11.6.tar.gz ]; then
+  if [ -f Rcpp_0.12.3.tar.gz ]; then
     echo -ne "reinstalling Rccp ..\r"
-    bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+    bin/R CMD INSTALL Rcpp_0.12.3.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
     echo -ne "reinstalling Rccp ...done\r"
-    rm Rcpp_0.11.6.tar.gz
+    rm Rcpp_0.12.3.tar.gz
   else
     echo -ne "Rcpp already installed"
   fi
@@ -63,7 +63,7 @@ if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
 else
   if [ -f plyr_1.8.2.tar.gz ]; then
     echo -ne "reinstalling plyr ..\r"
-    bin/R CMD INSTALL Rcpp_0.11.6.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+    bin/R CMD INSTALL plyr_1.8.2.tar.gz >> $OPENSHIFT_LOG_DIR/installRplyr.log 2>&1
     echo -ne "reinstalling plyr ...done\r"
     rm plyr_1.8.2.tar.gz
   else
