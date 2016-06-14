@@ -16,17 +16,17 @@ ln -s `pwd` /sandbox/r
 
 if [ ! -d $R_HOME/lib64/R/library/Rcpp ]; then
   echo -ne "installing Rcpp ..\r"
-  wget --quiet http://cran.es.r-project.org/src/contrib/Rcpp_0.12.3.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
-  bin/R CMD INSTALL Rcpp_0.12.3.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+  wget --quiet https://cran.r-project.org/src/contrib/Rcpp_0.12.5.tar.gz > $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+  bin/R CMD INSTALL Rcpp_0.12.5.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
   echo -ne "installing Rcpp ... done\r"
   echo ''
   rm Rcpp_0.11.6.tar.gz
 else
-  if [ -f Rcpp_0.12.3.tar.gz ]; then
+  if [ -f Rcpp_0.12.5.tar.gz ]; then
     echo -ne "reinstalling Rccp ..\r"
-    bin/R CMD INSTALL Rcpp_0.12.3.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
+    bin/R CMD INSTALL Rcpp_0.12.5.tar.gz >> $OPENSHIFT_LOG_DIR/installRcpp.log 2>&1
     echo -ne "reinstalling Rccp ...done\r"
-    rm Rcpp_0.12.3.tar.gz
+    rm Rcpp_0.12.5.tar.gz
   else
     echo -ne "Rcpp already installed"
   fi
@@ -43,15 +43,14 @@ else
   echo ''
 fi
 
-if [ ! -d $R_HOME/lib64/R/library/shiny ]; then
-  echo -ne "installing shiny ..\r"
-  bin/Rscript -e "install.packages('shiny',contriburl = contrib.url('http://cran.r-project.org'))" > $OPENSHIFT_LOG_DIR/installRshiny.log 2>&1
-  echo -ne "installing shiny ... done\r"
-  echo ''
-else
-  echo -ne "shiny already installed\r"
-  echo ''
-fi
+wget https://cran.r-project.org/src/contrib/htmltools.0.3.5.tar.gz
+  bin/R CMD INSTALL htmltools.0.3.5.tar.gz
+
+wget https://cran.r-project.org/src/contrib/httpuv.1.3.3.tar.gz
+  bin/R CMD INSTALL httpuv.1.3.3.tar.gz
+
+wget https://cran.r-project.org/src/contrib/shiny.0.13.2.tar.gz
+  bin/R CMD INSTALL shiny.0.13.2.tar.gz
 
 if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
   echo -ne "installing plyr ..\r"
@@ -83,3 +82,4 @@ else
   echo -ne "rCharts already installed\r"
   echo ''
 fi
+
