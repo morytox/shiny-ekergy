@@ -53,23 +53,16 @@ make install PREFIX=/sandbox/bzip2
 
 cd ..
 wget http://tukaani.org/xz/xz-5.2.2.tar.gz
-#http://downloads.sourceforge.net/project/p7zip/p7zip/15.14.1/p7zip_15.14.1_src_all.tar.bz2
 tar -xf xz-5.2.2.tar.gz
-#p7zip_15.14.1_src_all.tar.bz2
 cd xz-5.2.2
 ./configure --prefix=/sandbox/lzma
-#p7zip_15.14.1
 make
 make install
 
 cd ..
 wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.bz2
-#ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.bz2
-#ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-10.21.tar.bz2
 tar -xf pcre-8.38.tar.bz2
 cd pcre-8.38
-#pcre-8.39.tar.bz2
-#cd pcre-8.39
 ./configure --prefix=/sandbox/pcre --enable-utf8 --enable-unicode-properties
 make
 make install
@@ -88,12 +81,29 @@ cd curl-7.49.1
 make
 make install
 
+cd..
+wget http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.26.tar.gz
+tar -xf libsndfile-1.0.26.tar.gz
+cd libsndfile-1.0.26
+./configure --prefix=/sandbox/libsndfile
+make
+make install
+
+cd..
+wget http://www.fftw.org/fftw-3.3.4.tar.gz
+tar -xf fftw-3.3.4.tar.gz
+cd fftw-3.3.4
+./configure  --prefix=/sandbox/fftw
+make
+make install
+
 cd ..
 cd "R-${R_VERSION}"
 
-export LDFLAGS="-L/sandbox/zlib/lib -L/sandbox/bzip2hc/lib -L/sandbox/lzma/lib -L/sandbox/pcre/lib -L/sandbox/curl/lib"
-export CPPFLAGS="-I/sandbox/zlib/include -I/sandbox/bzip2hc/include -I/sandbox/lzma/include -I/sandbox/pcre/include -I/sandbox/curl/include"
+export LDFLAGS="-L/sandbox/zlib/lib -L/sandbox/bzip2hc/lib -L/sandbox/lzma/lib -L/sandbox/pcre/lib -L/sandbox/curl/lib -L/sandbox/libsndfile/lib -L/sandbox/fftw/lib"
+export CPPFLAGS="-I/sandbox/zlib/include -I/sandbox/bzip2hc/include -I/sandbox/lzma/include -I/sandbox/pcre/include -I/sandbox/curl/include -I/sandbox/libsndfile/include -I/sandbox/fftw/include"
 
+# Note, anytime you change th LDFLAGS or CPPFLAGS path, you need to run the ./configure command below and make install (to update R).
 ./configure --prefix=/sandbox/r --with-recommended-packages=no
 make
 make install

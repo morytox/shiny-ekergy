@@ -51,6 +51,10 @@ wget https://cran.r-project.org/src/contrib/httpuv_1.3.3.tar.gz
 tar -xf httpuv_1.3.3.tar.gz
   R CMD INSTALL httpuv
 
+wget https://cran.r-project.org/src/contrib/xtable_1.8-2.tar.gz
+tar -xf xtable_1.8-2.tar.gz
+R CMD INSTALL xtable
+
 wget https://cran.r-project.org/src/contrib/shiny_0.13.2.tar.gz
 tar -xf shiny_0.13.2.tar.gz
   R CMD INSTALL shiny
