@@ -94,22 +94,24 @@ cd "R-${R_VERSION}"
 export LDFLAGS="-L/sandbox/zlib/lib -L/sandbox/bzip2hc/lib -L/sandbox/lzma/lib -L/sandbox/pcre/lib -L/sandbox/curl/lib"
 export CPPFLAGS="-I/sandbox/zlib/include -I/sandbox/bzip2hc/include -I/sandbox/lzma/include -I/sandbox/pcre/include -I/sandbox/curl/include"
 
-./configure --prefix=/sandbox/r
+./configure --prefix=/sandbox/r --with-recommended-packages=no
+make
+make install
 
-  cd "R-${R_VERSION}"
-  echo -ne "configuring R ..\r"
-  ./configure --prefix=/sandbox/r --with-recommended-packages=no >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo -ne "configuring R ... done\r"
-  echo ''
-  echo -ne "building R ..\r"
-  make --silent >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo -ne "building R ... done\r"
-  echo ''
-  echo -ne "installing R ..\r"
-  make --silent install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
-  echo -ne "installing R ... done\r"
-  rm -rf "R-${R_VERSION}"
-  echo ''
+  #cd "R-${R_VERSION}"
+  #echo -ne "configuring R ..\r"
+  #./configure --prefix=/sandbox/r --with-recommended-packages=no >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  #echo -ne "configuring R ... done\r"
+  #echo ''
+  #echo -ne "building R ..\r"
+  #make --silent >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  #echo -ne "building R ... done\r"
+  #echo ''
+  #echo -ne "installing R ..\r"
+  #make --silent install >> $OPENSHIFT_LOG_DIR/installR.log 2>&1
+  #echo -ne "installing R ... done\r"
+  #rm -rf "R-${R_VERSION}"
+  #echo ''
   
 else
   echo "R already installed in the gear"
