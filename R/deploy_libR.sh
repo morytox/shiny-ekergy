@@ -43,14 +43,17 @@ else
   echo ''
 fi
 
-wget https://cran.r-project.org/src/contrib/htmltools.0.3.5.tar.gz
-  bin/R CMD INSTALL htmltools.0.3.5.tar.gz
+wget https://cran.r-project.org/src/contrib/htmltools_0.3.5.tar.gz
+tar -xf htmltools_0.3.5.tar.gz
+  R CMD INSTALL htmltools
 
-wget https://cran.r-project.org/src/contrib/httpuv.1.3.3.tar.gz
-  bin/R CMD INSTALL httpuv.1.3.3.tar.gz
+wget https://cran.r-project.org/src/contrib/httpuv_1.3.3.tar.gz
+tar -xf httpuv_1.3.3.tar.gz
+  R CMD INSTALL httpuv
 
-wget https://cran.r-project.org/src/contrib/shiny.0.13.2.tar.gz
-  bin/R CMD INSTALL shiny.0.13.2.tar.gz
+wget https://cran.r-project.org/src/contrib/shiny_0.13.2.tar.gz
+tar -xf shiny_0.13.2.tar.gz
+  R CMD INSTALL shiny
 
 if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
   echo -ne "installing plyr ..\r"
