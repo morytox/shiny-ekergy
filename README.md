@@ -2,6 +2,11 @@
 
 This project installs the libraries and packages needed to run R Shiny on an OpenShift web server instance.
 
+#### Versions
+
+R 3.3.0
+Shiny 0.13.2
+
 ## Usage
 
 1. Create a new app on [openshift](https://www.openshift.com/) using nodejs-0.10 as the cartridge type.
