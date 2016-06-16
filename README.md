@@ -44,6 +44,15 @@ If everything went well, you should now have a server running R Shiny!
 
 Access your web application at your OpenShift app url. At the root url, you should see a directory listing. You can navigate to your app at /samples/myproject.
 
+## Updating Your Code
+
+If you make changes to your R project and commit/push the changes back to OpenShift, you will need to run the following command (on your server via SSH) to restart your app:
+
+```bash
+cd app-root/repo/R
+bash generate_shiny_server_conf.sh
+```
+
 ## Issues and Trouble-Shooting
 
 If you encounter any errors during the execution of the bash scripts, open the individual .sh file and execute the commands manually, one at a time.
