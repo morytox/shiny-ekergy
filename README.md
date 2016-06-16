@@ -1,10 +1,6 @@
 # Run R Shiny on OpenShift!
 
-This project installs the libraries and packages needed to run R Shiny on an OpenShift web server instance.
-
-R 3.3.0
-
-Shiny 0.13.2
+This project installs the libraries and packages needed to run R Shiny on an OpenShift web server instance, using R 3.3.0 and Shiny 0.13.2.
 
 ## Usage
 
