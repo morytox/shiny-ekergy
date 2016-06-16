@@ -30,9 +30,7 @@ bash deploy_libR.sh
 bash generate_shiny_server_conf.sh
 ```
 
-10. If any errors occur, open the above .sh files and paste the individual commands to the server to install libraries manually.
-
-11. For any additional packages used by your R application, install them manually with the following commands:
+If any errors occur, open the above .sh files and paste the individual commands to the server to install libraries manually. For any additional packages used by your R application, install them manually with the following commands:
 
 ```
 # Run R console.
@@ -42,9 +40,9 @@ R
 install.packages('stringr')
 ```
 
-12. Access your web application at your OpenShift app url. At the root url, you should see a directory listing. You can navigate to your app at /samples/myproject.
-
 If everything went well, you should now have a server running R Shiny!
+
+Access your web application at your OpenShift app url. At the root url, you should see a directory listing. You can navigate to your app at /samples/myproject.
 
 ## Issues and Trouble-Shooting
 
