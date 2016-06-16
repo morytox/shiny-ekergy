@@ -43,15 +43,31 @@ else
   echo ''
 fi
 
-if [ ! -d $R_HOME/lib64/R/library/shiny ]; then
-  echo -ne "installing shiny ..\r"
-  bin/Rscript -e "install.packages('shiny',contriburl = contrib.url('http://cran.r-project.org'))" > $OPENSHIFT_LOG_DIR/installRshiny.log 2>&1
-  echo -ne "installing shiny ... done\r"
-  echo ''
-else
-  echo -ne "shiny already installed\r"
-  echo ''
-fi
+wget https://cran.r-project.org/src/contrib/htmltools_0.3.5.tar.gz
+tar -xf htmltools_0.3.5.tar.gz
+R CMD INSTALL htmltools
+
+wget https://cran.r-project.org/src/contrib/httpuv_1.3.3.tar.gz
+tar -xf httpuv_1.3.3.tar.gz
+R CMD INSTALL httpuv
+
+wget https://cran.r-project.org/src/contrib/xtable_1.8-2.tar.gz
+tar -xf xtable_1.8-2.tar.gz
+R CMD INSTALL xtable
+
+wget https://cran.r-project.org/src/contrib/shiny_0.13.2.tar.gz
+tar -xf shiny_0.13.2.tar.gz
+R CMD INSTALL shiny
+
+#wget https://cran.r-project.org/src/contrib/RcppEigen_0.3.2.8.1.tar.gz
+#https://launchpad.net/ubuntu/+archive/primary/+files/r-cran-rcppeigen_0.3.2.8.1.orig.tar.gz
+#tar -xf r-cran-rcppeigen_0.3.2.8.1.orig.tar.gz
+#tar -xf RcppEigen_0.3.2.8.1.tar.gz
+#R CMD INSTALL RcppEigen
+
+wget https://cran.r-project.org/src/contrib/lme4_1.1-12.tar.gz
+tar -xf lme4_1.1-12.tar.gz
+R CMD INSTALL lme4
 
 if [ ! -d $R_HOME/lib64/R/library/plyr ]; then
   echo -ne "installing plyr ..\r"
@@ -83,3 +99,4 @@ else
   echo -ne "rCharts already installed\r"
   echo ''
 fi
+
