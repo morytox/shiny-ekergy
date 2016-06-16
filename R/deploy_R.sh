@@ -96,6 +96,7 @@ cd fftw-3.3.4
 ./configure --prefix=/sandbox/fftw --with-pic
 make
 make install
+export PKG_CONFIG_PATH=/sandbox/fftw/lib/pkgconfig
 
 cd ..
 cd "R-${R_VERSION}"
