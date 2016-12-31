@@ -55,8 +55,8 @@ wget https://cran.r-project.org/src/contrib/xtable_1.8-2.tar.gz
 tar -xf xtable_1.8-2.tar.gz
 R CMD INSTALL xtable
 
-wget https://cran.r-project.org/src/contrib/shiny_0.13.2.tar.gz
-tar -xf shiny_0.13.2.tar.gz
+wget https://cran.r-project.org/src/contrib/shiny_0.14.2.tar.gz
+tar -xf shiny_0.14.2.tar.gz
 R CMD INSTALL shiny
 
 #wget https://cran.r-project.org/src/contrib/RcppEigen_0.3.2.8.1.tar.gz
